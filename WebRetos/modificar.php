@@ -44,7 +44,7 @@
 				$sql2 = 'UPDATE CATEGORIAS SET nombre="'.$modNom.'" WHERE id='.$idCategoria.';';
 				$resultado3=$conectar->query($sql2);
 				$conectar->close();
-				header('Location: consulta.php');
+				header('Location: index.php');
 			}
 		}
 	}

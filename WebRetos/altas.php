@@ -32,7 +32,7 @@ if(isset ($_POST["enviar"])){
 				$sql = "INSERT INTO CATEGORIAS(nombre)
 				VALUE('$nombre');";
 				$resultado = $conexion->query($sql);
-				header('Location:consulta.php');
+				header('Location:index.php');
 			}
 		}
 	}
