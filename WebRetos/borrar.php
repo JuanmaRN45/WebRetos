@@ -12,7 +12,7 @@
 			$conectar = new mysqli($servidor, $usuario, $contrasena, $bbdd);
 			$sql2 = 'DELETE FROM CATEGORIAS WHERE id='.$id.';';
 			$resultado2 = $conectar->query($sql2);
-			header('Location:consulta.php');
+			header('Location:index.php');
 		}
 	}
 

@@ -24,7 +24,7 @@
 					<h2 class="letraazul">Modificar Categorías</h2>
 					<label>Nombre:</label>
 					<input type="text" name="nombre" value="'.$nombre2.'" maxlength="30"/><br><br>
-					<a href="consulta.php">Ver listado</a><br><br>
+					<a href="index.php">Ver listado</a><br><br>
 					<input type="submit" name="enviar"/>
 					</form>';
 			}

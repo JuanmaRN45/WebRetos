@@ -10,7 +10,7 @@
 			<h2 class="letraazul">Añadir Categorías</h2>
 			<label>Nombre:</label>
 			<input type="text" name="nombre" maxlength="30"/><br><br>
-			<a href="consulta.php">Ver listado</a><br><br>
+			<a href="index.php">Ver listado</a><br><br>
 			<input type="submit" name="enviar"/>
 		</form>
 	</body>
