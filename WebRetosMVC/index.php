@@ -5,10 +5,7 @@
 			$this->consultarCategorias();
 		}
 		public function consultarCategorias(){
-			$servidor = "2daw.esvirgua.com";
-			$bbdd = "user2daw_BD1-14";
-			$usuario = "user2daw_14";
-			$contrasena = "RuolZQ4M{}Nx";
+			require_once('../config/conexion.php')
 			$conectar = new mysqli($servidor, $usuario, $contrasena, $bbdd);
 			$sql2 = 'SELECT id, nombre
 			FROM CATEGORIAS
