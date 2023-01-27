@@ -5,7 +5,7 @@
 			$this->consultarCategorias();
 		}
 		public function consultarCategorias(){
-			require_once('../config/conexion.php')
+			require_once('config/conexion.php');
 			$conectar = new mysqli($servidor, $usuario, $contrasena, $bbdd);
 			$sql2 = 'SELECT id, nombre
 			FROM CATEGORIAS
