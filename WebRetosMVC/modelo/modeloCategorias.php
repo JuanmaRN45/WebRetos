@@ -27,20 +27,22 @@
         public function consultaCategoria($datos){
 			require_once('../config/config.php');
 			$conectar = new mysqli($servidor, $usuario, $contrasena, $bbdd);
-			$consulta = 'SELECT nombre
+			$consulta = 'SELECT id,nombre
 			FROM CATEGORIAS
 			WHERE id='.$datos['id'].';';
 			$resultado2=$conectar->query($consulta);
+            $i = 0;
 			while($fila=$resultado2 -> fetch_assoc()){
-				$datos['nombre'] = $fila['nombre'];
+                $datos['id'][$i] = $fila['id'];
+				$datos['nombre'][$i] = $fila['nombre'];
+                $i=$i+1;
 			}
-			$resultado2=$conectar->query($consulta);
 		}
 
 		public function modificarCategoria($datos){
 			require_once('../config/config.php');
 			$conectar = new mysqli($servidor, $usuario, $contrasena, $bbdd);
-			$sql2 = 'UPDATE CATEGORIAS SET nombre="'.$datos['id'].'" WHERE id='.$datos['nombre'].';';
+			$sql2 = 'UPDATE CATEGORIAS SET nombre='.$datos['id'].' WHERE id='.$datos['nombre'].';';
 			$resultado3=$conectar->query($sql2);
 		}
     }

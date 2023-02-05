@@ -6,7 +6,6 @@
          */
         function __construct(){
             $this->modelo=new Categorias();
-
             if(isset ($_GET["idBor"])){
                 $datos['id'] = $_GET['idBor'];
                 $this->eliminarCat($datos);
@@ -47,7 +46,8 @@
         }
 
         public function consultaCategorias(){
-            header('Location:../vistas/consultaCategorias.php');
+            $this->modelo->consultaCategoria();
+            header('Location:../vistas/consultaCategorias.php?id='.$datos['id'].'&nombre='.$datos['nombre'].'');	
         }
      }
 
