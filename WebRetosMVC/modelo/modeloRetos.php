@@ -1,28 +1,37 @@
 <?php
     require_once('../controlador/controladorRetos.php');
+    require_once('../config/config.php');
     /**
      * Clase para la gestión de objetos de tipo Categorias
      */
     class Retos{
+        private $conexion;
+        private $usuario;
+        private $contrasenia;
+        private $servidor;
+        private $bd;
         /**
          * Constructor para el instanciamiento de objetos de tipo Categorias
          */
         function __construct(){
+            $this->servidor = constant('SERVIDOR');
+            $this->usuario = constant('USUARIO');
+            $this->contrasenia = constant('CONTRASENIA');
+            $this->bd = constant('BD');
         }
+
         public function anadirReto($array){
-            require_once('../config/config.php');
-            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
-            $sql = $conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?)');
+            $this->conectar();
+            $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?)');
 			$sql->bind_param('ssssssssii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[9],$array[8]);
             $sql->execute();
         }
 
         public function listarReto(){
-            require_once('../config/config.php');
-            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $this->conectar();
             $sql = 'SELECT *
 			FROM RETOS;';
-            $resultado = $conexion->query($sql);
+            $resultado = $this->conexion->query($sql);
             $i = 0;
             $array = [];
 			while($fila=$resultado -> fetch_assoc()){
@@ -44,12 +53,11 @@
         }
 
         public function sacarReto($array){
-            require_once('../config/config.php');
-            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $this->conectar();
             $sql = 'SELECT *
 			FROM RETOS
             WHERE id='.$array[0].';';
-            $resultado = $conexion->query($sql);
+            $resultado = $this->conexion->query($sql);
             $datos = [];
 			while($fila=$resultado -> fetch_assoc()){
                 $datos[0]= $fila['id'];
@@ -69,17 +77,19 @@
         }
 
         public function actualizarReto($array){
-            require_once('../config/config.php');
-            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $this->conectar();
             $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
-            $resultado=$conexion->query($sql);
+            $resultado=$this->conexion->query($sql);
         }
 
         public function eliminarReto($array){
-            require_once('../config/config.php');
-            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $this->conectar();
             $sql = 'DELETE FROM RETOS WHERE id='.$array[0].';';
-            $resultado=$conexion->query($sql); 
+            $resultado=$this->conexion->query($sql); 
+        }
+
+        private function conectar(){
+            $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
         }
     }
 ?>

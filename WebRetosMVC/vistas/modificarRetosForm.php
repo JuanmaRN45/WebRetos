@@ -39,13 +39,13 @@
             <label>Categoría:</label>
 			<select name="categoria">
 				<?php 
-					require('../config/config.php');
-					$conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
-					$consulta = 'SELECT id,nombre
-					FROM CATEGORIAS;';
-					$resultado=$conexion->query($consulta);
-					while($fila=$resultado -> fetch_assoc()){
-						echo '<option value="'.$fila['id'].'">'.$fila['nombre'].'</option>';
+					require_once('../controlador/controladorRetos.php');
+					$controladorRetos = new ControladorRetos();
+					$array = $controladorRetos->listarReto();
+					$i=0;
+					while($i<sizeof($array[0])){
+						echo '<option value="'.$array[0][$i].'">'.$array[1][$i].'</option>';
+						$i=$i+1;
 					}
 				?>
             </select>
