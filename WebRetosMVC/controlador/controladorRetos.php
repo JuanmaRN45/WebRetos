@@ -71,6 +71,10 @@
             $this->modelo->eliminarReto($array);
             header('Location:../vistas/listarRetos.php');
         }
+        
+        public function listarCat(){
+            return $this->modelo->listarCat();
+        }
     }
 
     $controlador = new ControladorRetos();

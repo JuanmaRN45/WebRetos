@@ -7,19 +7,28 @@
     require_once('../controlador/controladorRetos.php');
     $controladorRetos = new ControladorRetos();
     $reto = $controladorRetos->modReto($array);
+	$categorias = $controladorRetos->listarCat();
+	$i=0;
 ?>
 
 <html>
 	<head>
-		<title>Formulario Categorias</title>
+		<title>Formulario Modificar Reto</title>
 		<meta charset="utf-8">
 		<meta name="author" content="jrinconnavarro.guadalupe@alumnado.fundacionloyola.net">
+		<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	</head>
 	<body>
+		<nav>
+			<a href="../vistas/altaRetos.php"><button>ALTA RETOS</button></a>
+			<a href="../vistas/listarRetos.php"><button>LISTAR RETOS</button></a>
+			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
+			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
+		</nav>
 		<form action="../controlador/controladorRetos.php" method="post">
-            <h2 class="letraazul">Modificar Reto</h2>
+            <h2>Modificación de Reto</h2>
 			<label>Id:</label>
-			<?php echo '<input type="text" name="id" value="'.$reto[0].'" readonly/>';?>
+			<?php echo '<input type="text" name="id" value="'.$reto[0].'" readonly/>';?><br><br>
 			<label>Nombre:</label>
 			<?php echo '<input type="text" name="nombre" value="'.$reto[1].'" maxlength="100"/>';?><br><br>
             <label>Dirigido:</label>
@@ -39,17 +48,12 @@
             <label>Categoría:</label>
 			<select name="categoria">
 				<?php 
-					require_once('../controlador/controladorRetos.php');
-					$controladorRetos = new ControladorRetos();
-					$array = $controladorRetos->listarReto();
-					$i=0;
-					while($i<sizeof($array[0])){
-						echo '<option value="'.$array[0][$i].'">'.$array[1][$i].'</option>';
+					while($i<sizeof($categorias[0])){
+						echo '<option value="'.$categorias[0][$i].'">'.$categorias[1][$i].'</option>';
 						$i=$i+1;
 					}
 				?>
-            </select>
-			<a href="listarRetos.php">Ver listado</a><br><br>
+            </select><br><br>
 			<input type="submit" name="enviarActu"/>
 		</form>
     </body>

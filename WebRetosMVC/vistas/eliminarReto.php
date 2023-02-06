@@ -1,9 +1,10 @@
 <!-- Juan Manuel Rincón Navarro -->
 <html>
 	<head>
-		<title>Formulario Categorias</title>
+		<title>Eliminar Retos</title>
 		<meta charset="utf-8">
 		<meta name="author" content="jrinconnavarro.guadalupe@alumnado.fundacionloyola.net">
+		<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	</head>
 	<body>
 		<nav>
@@ -13,6 +14,7 @@
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
 		<form action="../controlador/controladorRetos.php" method="post">
+			<h2>Elige Reto a Eliminar</h2>
 			<select name="retoDel">
 				<?php
 					require_once('../controlador/controladorRetos.php');
@@ -24,7 +26,7 @@
 						$i=$i+1;
 					}
 				?>
-			</select>
+			</select><br><br>
 			<input type="submit" value="Enviar" name="btnModificar"/>
 		</form>
     </body>

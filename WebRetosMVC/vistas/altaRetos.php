@@ -1,9 +1,16 @@
 <!-- Juan Manuel Rincón Navarro -->
+<?php
+	require_once('../controlador/controladorRetos.php');
+	$controladorRetos = new ControladorRetos();
+	$array = $controladorRetos->listarCat();
+	$i=0;
+?>
 <html>
 	<head>
-		<title>Formulario Categorias</title>
+		<title>Formulario Alta Retos</title>
 		<meta charset="utf-8">
 		<meta name="author" content="jrinconnavarro.guadalupe@alumnado.fundacionloyola.net">
+		<link rel="stylesheet" type="text/css" href="../css/estilo.css">
 	</head>
 	<body>
 		<nav>
@@ -13,7 +20,7 @@
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
 		<form action="../controlador/controladorRetos.php"method="post">
-			<h2 class="letraazul">Añadir Retos</h2>
+			<h2>Añadir Retos</h2>
 			<label>Nombre:</label>
 			<input type="text" name="nombre" maxlength="100"/><br><br>
             <label>Dirigido:</label>
@@ -32,18 +39,13 @@
 			<input type="datetime-local" name="fpubli"/><br><br>
             <label>Categoría:</label>
 			<select name="categoria">
-				<?php 
-					require_once('../controlador/controladorRetos.php');
-					$controladorRetos = new ControladorRetos();
-					$array = $controladorRetos->listarReto();
-					$i=0;
+				<?php
 					while($i<sizeof($array[0])){
 						echo '<option value="'.$array[0][$i].'">'.$array[1][$i].'</option>';
 						$i=$i+1;
 					}
 				?>
-            </select>
-			<a href="listarRetos.php">Ver listado</a><br><br>
+            </select><br><br>
 			<input type="submit" name="enviar"/>
 		</form>
 	</body>

@@ -88,6 +88,22 @@
             $resultado=$this->conexion->query($sql); 
         }
 
+        public function listarCat(){
+
+            $this->conectar();
+            $sql = 'SELECT id,nombre
+			FROM CATEGORIAS;';
+            $resultado=$this->conexion->query($sql);
+            $categorias = [];
+            $i=0;
+            while($fila=$resultado -> fetch_assoc()){
+                $categorias[0][$i]= $fila['id'];
+                $categorias[1][$i]= $fila['nombre'];
+                $i=$i+1;
+            }
+            return $categorias;
+        }
+
         private function conectar(){
             $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
         }
