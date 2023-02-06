@@ -42,5 +42,37 @@
 			}
             return $array;
         }
+
+        public function sacarReto($array){
+            require_once('../config/config.php');
+            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $sql = 'SELECT *
+			FROM RETOS
+            WHERE id='.$array[0].';';
+            $resultado = $conexion->query($sql);
+            $datos = [];
+			while($fila=$resultado -> fetch_assoc()){
+                $datos[0]= $fila['id'];
+                $datos[1]= $fila['nombre'];
+                $datos[2]= $fila['dirigido'];
+                $datos[3]= $fila['descripcion'];
+                $datos[4]= $fila['fechaInicioInscripcion'];
+                $datos[5]= $fila['fechaFinInscripcion'];
+                $datos[6]= $fila['fechaInicioReto'];
+                $datos[7]= $fila['fechaFinReto'];
+                $datos[8]= $fila['fechaPublicacion'];
+                $datos[9]= $fila['publicado'];
+                $datos[10]= $fila['idProfesor'];
+                $datos[11]= $fila['idCategoria'];
+			}
+            return $datos;
+        }
+
+        public function actualizarReto($array){
+            require_once('../config/config.php');
+            $conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+            $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+            $resultado=$conexion->query($sql);
+        }
     }
 ?>

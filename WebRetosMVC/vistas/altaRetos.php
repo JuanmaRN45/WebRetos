@@ -15,9 +15,9 @@
             <label>Descripción:</label>
 			<textarea name="descripcion"></textarea><br><br>
             <label>Fecha Inicio Inscripción:</label>
-			<input type="date" name="fiinscrip"/><br><br>
+			<input type="datetime-local" name="fiinscrip"/><br><br>
             <label>Fecha Fin Inscripción:</label>
-			<input type="date" name="ffinscrip"/><br><br>
+			<input type="datetime-local" name="ffinscrip"/><br><br>
             <label>Fecha Inicio Reto:</label>
 			<input type="datetime-local" name="fireto"/><br><br>
             <label>Fecha Fin Reto:</label>
