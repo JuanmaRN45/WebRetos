@@ -12,8 +12,8 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
-		<form action="../vistas/modificarRetosForm.php" method="post">
-			<select name="retoMod">
+		<form action="../controlador/controladorRetos.php" method="post">
+			<select name="retoDel">
 				<?php
 					require_once('../controlador/controladorRetos.php');
 					$controladorRetos = new ControladorRetos();

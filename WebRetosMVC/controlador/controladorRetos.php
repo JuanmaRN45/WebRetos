@@ -39,6 +39,14 @@
 
                 $this->actualizarReto($array);
             }
+
+            if(isset ($_POST["retoDel"])){
+                $array = array(
+                    0 =>$_POST['retoDel'],
+                );
+
+                $this->eliminarReto($array);
+            }
         }
 
         public function anadirReto($array){
@@ -58,8 +66,12 @@
             $this->modelo->actualizarReto($array);
             header('Location:../vistas/listarRetos.php');
         }
+
+        public function eliminarReto($array){
+            $this->modelo->eliminarReto($array);
+            header('Location:../vistas/listarRetos.php');
+        }
     }
 
     $controlador = new ControladorRetos();
-
 ?>

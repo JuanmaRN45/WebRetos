@@ -5,6 +5,12 @@
 		<meta name="author" content="jrinconnavarro.guadalupe@alumnado.fundacionloyola.net">
 	</head>
 	<body>
+        <nav>
+			<a href="../vistas/altaRetos.php"><button>ALTA RETOS</button></a>
+			<a href="../vistas/listarRetos.php"><button>LISTAR RETOS</button></a>
+			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
+			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
+		</nav>
         <?php
             require_once('../controlador/controladorRetos.php');
             $controladorRetos =new ControladorRetos();
