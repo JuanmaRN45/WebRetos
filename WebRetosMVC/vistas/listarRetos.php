@@ -28,13 +28,13 @@
                 <th>PROFESOR</th>
                 <th>CATEGORÍA</th>
             </tr>
-            <tr>
-                <?php
-                    require_once('../controlador/controladorRetos.php');
-                    $controladorRetos =new ControladorRetos();
-                    $array = $controladorRetos->listarReto();
-                    $i=0;
-                    while($i<sizeof($array[0])){
+            <?php
+                require_once('../controlador/controladorRetos.php');
+                $controladorRetos =new ControladorRetos();
+                $array = $controladorRetos->listarReto();
+                $i=0;
+                while($i<sizeof($array[0])){
+                    echo '<tr>';
                         echo '<td>'.$array[0][$i].'</td>';
                         echo '<td>'.$array[1][$i].'</td>';
                         echo '<td>'.$array[2][$i].'</td>';
@@ -48,9 +48,9 @@
                         echo '<td>'.$array[10][$i].'</td>';
                         echo '<td>'.$array[11][$i].'</td>';
                         $i=$i+1;
-                    }
-                ?>
-            </tr>
+                    echo '</tr>';
+                }
+            ?>
         </table>
 	</body>
 </html>
