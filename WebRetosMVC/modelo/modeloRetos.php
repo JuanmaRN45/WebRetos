@@ -30,7 +30,8 @@
         public function listarReto(){
             $this->conectar();
             $sql = 'SELECT *
-			FROM RETOS;';
+			FROM RETOS
+            ORDER BY id;';
             $resultado = $this->conexion->query($sql);
             $i = 0;
             $array = [];

@@ -1,3 +1,10 @@
+<?php 
+    require_once('../controlador/controladorRetos.php');
+    $controladorRetos =new ControladorRetos();
+    $array = $controladorRetos->listarReto();
+    $i=0;
+?>
+
 <html>
 	<head>
 		<title>Listado de Retos</title>
@@ -29,10 +36,6 @@
                 <th>CATEGORÍA</th>
             </tr>
             <?php
-                require_once('../controlador/controladorRetos.php');
-                $controladorRetos =new ControladorRetos();
-                $array = $controladorRetos->listarReto();
-                $i=0;
                 while($i<sizeof($array[0])){
                     echo '<tr>';
                         echo '<td>'.$array[0][$i].'</td>';
