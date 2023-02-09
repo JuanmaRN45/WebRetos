@@ -54,6 +54,17 @@
 					}
 				?>
             </select><br><br>
+			<label>Publicar:</label><br><br>
+			<?php 
+				if($reto[9]==1){
+					echo'<input type="radio" value="1" name="publicar" checked/>Si';
+					echo'<input type="radio" value="0" name="publicar"/>No<br><br>';
+				}
+				else{
+					echo'<input type="radio" value="1" name="publicar"/>Si';
+					echo'<input type="radio" value="0" name="publicar" checked/>No<br><br>';
+				}
+			?>
 			<input type="submit" name="enviarActu"/>
 		</form>
     </body>

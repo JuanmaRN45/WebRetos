@@ -22,8 +22,8 @@
 
         public function anadirReto($array){
             $this->conectar();
-            $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?)');
-			$sql->bind_param('ssssssssii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[9],$array[8]);
+            $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,publicado,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?,?)');
+			$sql->bind_param('ssssssssiii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[10],$array[9],$array[8]);
             $sql->execute();
         }
 

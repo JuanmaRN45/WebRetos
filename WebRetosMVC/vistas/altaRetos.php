@@ -46,6 +46,9 @@
 					}
 				?>
             </select><br><br>
+			<label>Publicar:</label><br><br>
+			<input type="radio" value="1" name="publicar"/>Si<br><br>
+			<input type="radio" value="0" name="publicar"/>No<br><br>
 			<input type="submit" name="enviar"/>
 		</form>
 	</body>

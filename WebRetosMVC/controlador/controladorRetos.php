@@ -18,6 +18,7 @@
                     $_POST['fpubli'],
                     $_POST['categoria'],
                     1,
+                    $_POST['publicar'],
                 );
 
                 $this->anadirReto($array);
@@ -35,6 +36,7 @@
                     $_POST['fpubli'],
                     $_POST['categoria'],
                     1,
+                    $_POST['publicar'],
                 );
 
                 $this->actualizarReto($array);
@@ -50,30 +52,75 @@
         }
 
         public function anadirReto($array){
-            $this->modelo->anadirReto($array);
-            header('Location:../vistas/listarRetos.php');
+            try {
+                $this->modelo->anadirReto($array);
+                header('Location:../vistas/listarRetos.php');
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/altaRetos.php">Volver</a></p>';
+            }
         }
 
         public function listarReto(){
-            return $this->modelo->listarReto();
+            try {
+               return $this->modelo->listarReto();
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../index.html">Volver</a></p>';
+            }
+            
         }
 
         public function modReto($array){
-            return $this->modelo->sacarReto($array);
+            try {
+                return $this->modelo->sacarReto($array);
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/modificarRetos.php">Volver</a></p>';
+            }
+            
         }
 
         public function actualizarReto($array){
-            $this->modelo->actualizarReto($array);
-            header('Location:../vistas/listarRetos.php');
+            try {
+                $this->modelo->actualizarReto($array);
+                header('Location:../vistas/listarRetos.php');
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/modificarRetosForm.php">Volver</a></p>';
+            }
+            
         }
 
         public function eliminarReto($array){
-            $this->modelo->eliminarReto($array);
-            header('Location:../vistas/listarRetos.php');
+            try {
+                $this->modelo->eliminarReto($array);
+                header('Location:../vistas/listarRetos.php');
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/eliminarReto.php">Volver</a></p>';
+            }
         }
         
         public function listarCat(){
-            return $this->modelo->listarCat();
+            try {
+                return $this->modelo->listarCat();
+             }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/listarRetos.php">Volver</a></p>';
+            }
         }
     }
 
