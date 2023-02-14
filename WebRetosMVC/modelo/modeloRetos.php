@@ -79,7 +79,7 @@
 
         public function actualizarReto($array){
             $this->conectar();
-            $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+            $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
             $resultado=$this->conexion->query($sql);
         }
 
