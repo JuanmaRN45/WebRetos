@@ -23,7 +23,7 @@
                 echo '<input id="invisible" type="text" value="'.$array[0].'" name="retoDel" hidden>'; 
             ?>
             <br><br>
-            <a href="../vistas/eliminarReto.php"><button>Volver</button></a>
+            <a href="../vistas/eliminarReto.php">Volver</a>
 			<input type="submit" value="Eliminar" name="Eliminar"/>
 		</form>
 	</body>

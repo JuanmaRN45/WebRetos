@@ -29,37 +29,43 @@
         </form>
         <h1>LISTADO DE RETOS</h1>
         <form action="../controlador/controladorRetos.php" method="post">
-            <?php echo '<h2>Filtrado Reto '.$reto[1].'</h2>';?>
-			<label>Id:</label>
-			<?php echo '<label>'.$reto[0].'</label>';?><br><br>
-			<label>Nombre:</label>
-            <?php echo '<label>'.$reto[1].'</label>';?><br><br>
-            <label>Dirigido:</label>
-			<?php echo '<label>'.$reto[2].'</label>';?><br><br>
-            <label>Descripción:</label>
-			<?php echo '<label>'.$reto[3].'</label>';?><br><br>
-            <label>Fecha Inicio Inscripción:</label>
-			<?php echo '<label>'.$reto[4].'</label>';?><br><br>
-            <label>Fecha Fin Inscripción:</label>
-			<?php echo '<label>'.$reto[5].'</label>';?><br><br>
-            <label>Fecha Inicio Reto:</label>
-			<?php echo '<label>'.$reto[6].'</label>';?><br><br>
-            <label>Fecha Fin Reto:</label>
-			<?php echo '<label>'.$reto[7].'</label>';?><br><br>
-            <label>Fecha Publicación:</label>
-			<?php echo '<label>'.$reto[8].'</label>';?><br><br>
-            <label>Profesor:</label>
-			<?php echo '<label>'.$reto[10].'</label>';?><br><br>
-            <label>Categoría:</label>
-			<?php echo '<label>'.$reto[11].'</label>';?><br><br>
-			<label>Publicado:</label>
-			<?php 
-				if($reto[9]==1){
-					echo '<label>Si</label><br><br>';
+			<?php
+				if(isset($reto[0])){
+					echo '<h2>Filtrado Reto '.$reto[1].'</h2>';
+					echo '<label>Id:</label>';
+					echo '<p>'.$reto[0].'</p><br><br>';
+					echo '<label>Nombre:</label>';
+					echo '<p>'.$reto[1].'</p><br><br>';
+					echo '<label>Dirigido:</label>';
+					echo '<p>'.$reto[2].'</p><br><br>';
+					echo '<label>Descripción:</label>';
+					echo '<p>'.$reto[3].'</p><br><br>';
+					echo '<label>Fecha Inicio Inscripción:</label>';
+					echo '<p>'.$reto[4].'</p><br><br>';
+					echo '<label>Fecha Fin Inscripción:</label>';
+					echo '<p>'.$reto[5].'</p><br><br>';
+					echo '<label>Fecha Inicio Reto:</label>';
+					echo '<p>'.$reto[6].'</p><br><br>';
+					echo '<label>Fecha Fin Reto:</label>';
+					echo '<p>'.$reto[7].'</p><br><br>';
+					echo '<label>Fecha Publicación:</label>';
+					echo '<p>'.$reto[8].'</p><br><br>';
+					echo '<label>Profesor:</label>';
+					echo '<p>'.$reto[10].'</p><br><br>';
+					echo '<label>Categoría:</label>';
+					echo '<p>'.$reto[11].'</p><br><br>';
+					echo '<label>Publicado:</label>';
+					if($reto[9]==1){
+						echo '<p>Si</p><br><br>';
+					}
+					else{
+						echo '<p>No</p><br><br>';
+					}
 				}
 				else{
-					echo '<label>No</label><br><br>';
+					echo '<label>NO HAY RETOS CREADOS AÚN CON ESE NOMBRE</label>';
 				}
+
 			?>
 		</form>
 	</body>
