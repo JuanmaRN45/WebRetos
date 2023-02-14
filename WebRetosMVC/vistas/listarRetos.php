@@ -19,7 +19,7 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
-        <form action="../controlador/controladorRetos.php" method="post">
+        <form action="../vistas/filtroLista.php" method="post">
             <label>Nombre</label>
             <input type="text" name="nomFiltro">
             <input type="submit" value="Filtrar" name="btnFiltro">
@@ -43,26 +43,27 @@
             <?php
                 if(isset($array[0])){
                     while($i<sizeof($array[0])){
-                    echo '<tr>';
-                        echo '<td>'.$array[0][$i].'</td>';
-                        echo '<td>'.$array[1][$i].'</td>';
-                        echo '<td>'.$array[2][$i].'</td>';
-                        echo '<td>'.$array[3][$i].'</td>';
-                        echo '<td>'.$array[4][$i].'</td>';
-                        echo '<td>'.$array[5][$i].'</td>';
-                        echo '<td>'.$array[6][$i].'</td>';
-                        echo '<td>'.$array[7][$i].'</td>';
-                        echo '<td>'.$array[8][$i].'</td>';
-                        if($array[9][$i]==1){
-                            echo '<td>Si</td>';
-                        }
-                        else{
-                            echo '<td>No</td>';
-                        }
-                        echo '<td>'.$array[10][$i].'</td>';
-                        echo '<td>'.$array[11][$i].'</td>';
-                        $i=$i+1;
-                    echo '</tr>';}
+                        echo '<tr>';
+                            echo '<td>'.$array[0][$i].'</td>';
+                            echo '<td>'.$array[1][$i].'</td>';
+                            echo '<td>'.$array[2][$i].'</td>';
+                            echo '<td>'.$array[3][$i].'</td>';
+                            echo '<td>'.$array[4][$i].'</td>';
+                            echo '<td>'.$array[5][$i].'</td>';
+                            echo '<td>'.$array[6][$i].'</td>';
+                            echo '<td>'.$array[7][$i].'</td>';
+                            echo '<td>'.$array[8][$i].'</td>';
+                            if($array[9][$i]==1){
+                                echo '<td>Si</td>';
+                            }
+                            else{
+                                echo '<td>No</td>';
+                            }
+                            echo '<td>'.$array[10][$i].'</td>';
+                            echo '<td>'.$array[11][$i].'</td>';
+                            $i=$i+1;
+                        echo '</tr>';
+                    }
                 }
                 else{
                     echo '<tr><td colspan="12">NO HAY RETOS CREADOS AÚN</td></tr>';

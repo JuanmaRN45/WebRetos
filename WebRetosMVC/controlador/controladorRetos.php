@@ -49,13 +49,6 @@
 
                 $this->eliminarReto($array);
             }
-
-            if(isset ($_POST["btnFiltro"])){
-                $array = array(
-                    0 =>$_POST['nomFiltro'],
-                );
-                $this->filtrarReto($array);
-            }
         }
 
         public function anadirReto($array){
