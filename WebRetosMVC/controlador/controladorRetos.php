@@ -49,6 +49,13 @@
 
                 $this->eliminarReto($array);
             }
+
+            if(isset ($_POST["btnFiltro"])){
+                $array = array(
+                    0 =>$_POST['nomFiltro'],
+                );
+                $this->filtrarReto($array);
+            }
         }
 
         public function anadirReto($array){
@@ -112,6 +119,17 @@
             }
         }
         
+        public function filtrarReto($array){
+            try {
+                return $this->modelo->filtrarReto($array);
+            }
+            catch(mysqli_sql_exception $e) 
+            {
+                echo '<p>' . $e->getMessage() . '</p>';
+                echo '<p><a href="../vistas/listarRetos.php">Volver</a></p>';
+            }
+        }
+
         public function listarCat(){
             try {
                 return $this->modelo->listarCat();

@@ -19,6 +19,11 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
+        <form action="../controlador/controladorRetos.php" method="post">
+            <label>Nombre</label>
+            <input type="text" name="nomFiltro">
+            <input type="submit" value="Filtrar" name="btnFiltro">
+        </form>
         <h1>LISTADO DE RETOS</h1>
         <table>
             <tr>
@@ -36,7 +41,8 @@
                 <th>CATEGORÍA</th>
             </tr>
             <?php
-                while($i<sizeof($array[0])){
+                if(isset($array[0])){
+                    while($i<sizeof($array[0])){
                     echo '<tr>';
                         echo '<td>'.$array[0][$i].'</td>';
                         echo '<td>'.$array[1][$i].'</td>';
@@ -56,8 +62,11 @@
                         echo '<td>'.$array[10][$i].'</td>';
                         echo '<td>'.$array[11][$i].'</td>';
                         $i=$i+1;
-                    echo '</tr>';
+                    echo '</tr>';}
                 }
+                else{
+                    echo '<tr><td colspan="12">NO HAY RETOS CREADOS AÚN</td></tr>';
+                }   
             ?>
         </table>
 	</body>
