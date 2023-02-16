@@ -1,5 +1,6 @@
 <!-- Juan Manuel Rincón Navarro -->
 <?php
+	
 	require_once('../controlador/controladorRetos.php');
 	$controladorRetos = new ControladorRetos();
 	$array = $controladorRetos->listarCat();
@@ -19,6 +20,22 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
+		<?php
+			if(isset($_POST['enviar'])){
+				$anadir = $controladorRetos->anadirReto($_POST);
+				switch($anadir)
+				{
+					case 1:
+						echo '<p>Fallo al insertar</p>';
+						break;
+		
+					case 2:
+						echo '<center><p>Se han insertado datos vacíos, se deben rellenar todos los datos, excepto la descripción que es opcional</p><center>';
+						break;
+		
+				}
+			}
+		?>
 		<form action="" method="post">
 			<h2>Añadir Retos</h2>
 			<label>Nombre:</label>
@@ -53,8 +70,3 @@
 		</form>
 	</body>
 </html>
-<?php
-	if(isset($_POST['enviar'])){
-		$anadir = $controladorRetos->anadirReto($_POST);
-	}
-?>

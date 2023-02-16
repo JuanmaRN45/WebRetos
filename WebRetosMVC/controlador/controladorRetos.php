@@ -10,26 +10,30 @@
 
         public function anadirReto($datos){
             try {
-                $array = array(
-                    0 =>$datos['nombre'],
-                    $datos['dirigido'],
-                    $datos['descripcion'],
-                    $datos['fiinscrip'],
-                    $datos['ffinscrip'],
-                    $datos['fireto'],
-                    $datos['ffreto'],
-                    $datos['fpubli'],
-                    $datos['categoria'],
-                    1,
-                    $datos['publicar'],
-                );
-                $this->modelo->anadirReto($array);
-                header('Location:../vistas/listarRetos.php');
+                if(!empty($datos['nombre']) && !empty($datos['dirigido']) && !empty($datos['fiinscrip']) && !empty($datos['ffinscrip']) && !empty($datos['fireto']) && !empty($datos['fpubli']) && !empty($datos['categoria']) && !empty($datos['publicar'])){
+                    $array = array(
+                        0 =>$datos['nombre'],
+                        $datos['dirigido'],
+                        $datos['descripcion'],
+                        $datos['fiinscrip'],
+                        $datos['ffinscrip'],
+                        $datos['fireto'],
+                        $datos['ffreto'],
+                        $datos['fpubli'],
+                        $datos['categoria'],
+                        1,
+                        $datos['publicar'],
+                    );
+                    $this->modelo->anadirReto($array);
+                    header('Location:../vistas/listarRetos.php');
+                }
+                else{
+                    return 2;
+                }     
             }
             catch(mysqli_sql_exception $e) 
             {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/altaRetos.php">Volver</a></p>';
+                return 1;
             }
         }
 
