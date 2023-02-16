@@ -6,53 +6,23 @@
          */
         function __construct(){
             $this->modelo=new Retos();
-            if(isset ($_POST["dirigido"])){
-                $array = array(
-                    0 =>$_POST['nombre'],
-                    $_POST['dirigido'],
-                    $_POST['descripcion'],
-                    $_POST['fiinscrip'],
-                    $_POST['ffinscrip'],
-                    $_POST['fireto'],
-                    $_POST['ffreto'],
-                    $_POST['fpubli'],
-                    $_POST['categoria'],
-                    1,
-                    $_POST['publicar'],
-                );
-
-                $this->anadirReto($array);
-            }
-            if(isset ($_POST["dirigidoMod"])){
-                $array = array(
-                    0 =>$_POST['id'],
-                    $_POST['nombre'],
-                    $_POST['dirigidoMod'],
-                    $_POST['descripcion'],
-                    $_POST['fiinscrip'],
-                    $_POST['ffinscrip'],
-                    $_POST['fireto'],
-                    $_POST['ffreto'],
-                    $_POST['fpubli'],
-                    $_POST['categoria'],
-                    1,
-                    $_POST['publicar'],
-                );
-
-                $this->actualizarReto($array);
-            }
-
-            if(isset ($_POST["retoDel"])){
-                $array = array(
-                    0 =>$_POST['retoDel'],
-                );
-
-                $this->eliminarReto($array);
-            }
         }
 
-        public function anadirReto($array){
+        public function anadirReto($datos){
             try {
+                $array = array(
+                    0 =>$datos['nombre'],
+                    $datos['dirigido'],
+                    $datos['descripcion'],
+                    $datos['fiinscrip'],
+                    $datos['ffinscrip'],
+                    $datos['fireto'],
+                    $datos['ffreto'],
+                    $datos['fpubli'],
+                    $datos['categoria'],
+                    1,
+                    $datos['publicar'],
+                );
                 $this->modelo->anadirReto($array);
                 header('Location:../vistas/listarRetos.php');
             }
@@ -87,8 +57,22 @@
             
         }
 
-        public function actualizarReto($array){
+        public function actualizarReto($datos){
             try {
+                $array = array(
+                    0 =>$_POST['id'],
+                    $_POST['nombre'],
+                    $_POST['dirigidoMod'],
+                    $_POST['descripcion'],
+                    $_POST['fiinscrip'],
+                    $_POST['ffinscrip'],
+                    $_POST['fireto'],
+                    $_POST['ffreto'],
+                    $_POST['fpubli'],
+                    $_POST['categoria'],
+                    1,
+                    $_POST['publicar'],
+                );
                 $this->modelo->actualizarReto($array);
                 header('Location:../vistas/listarRetos.php');
             }
@@ -100,8 +84,11 @@
             
         }
 
-        public function eliminarReto($array){
+        public function eliminarReto($datos){
             try {
+                $array = array(
+                    0 =>$_POST['retoDel'],
+                );
                 $this->modelo->eliminarReto($array);
                 header('Location:../vistas/listarRetos.php');
             }

@@ -22,9 +22,13 @@
 
         public function anadirReto($array){
             $this->conectar();
+            if($array[2]==""){
+                $array[2]=NULL;
+            }
             $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,publicado,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?,?)');
-			$sql->bind_param('ssssssssiii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[10],$array[9],$array[8]);
+            $sql->bind_param('ssssssssiii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[10],$array[9],$array[8]);
             $sql->execute();
+            
         }
 
         public function listarReto(){
@@ -103,8 +107,15 @@
 
         public function actualizarReto($array){
             $this->conectar();
-            $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
-            $resultado=$this->conexion->query($sql);
+            if($array[3]==""){
+                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion=NULL,fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+                $resultado=$this->conexion->query($sql);
+            }
+            else{
+                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+                $resultado=$this->conexion->query($sql);
+            }
+            
         }
 
         public function eliminarReto($array){

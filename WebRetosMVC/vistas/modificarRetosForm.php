@@ -1,7 +1,12 @@
 <!-- Juan Manuel Rincón Navarro -->
 <?php
+	if(isset($_POST['enviarActu'])){
+		require_once('../controlador/controladorRetos.php');
+    	$controladorRetos = new ControladorRetos();
+		$actualizar = $controladorRetos->actualizarReto($_POST);
+	}
     $array = array(
-        0 =>$_POST['retoMod'],
+        0 =>$_POST['retoMod']
     );
 	
     require_once('../controlador/controladorRetos.php');
@@ -25,7 +30,7 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
-		<form action="../controlador/controladorRetos.php" method="post">
+		<form action="" method="post">
             <h2>Modificación de Reto</h2>
 			<label>Id:</label>
 			<?php echo '<input type="text" name="id" value="'.$reto[0].'" readonly/>';?><br><br>

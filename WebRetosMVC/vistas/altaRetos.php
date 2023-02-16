@@ -19,7 +19,7 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
-		<form action="../controlador/controladorRetos.php"method="post">
+		<form action="" method="post">
 			<h2>Añadir Retos</h2>
 			<label>Nombre:</label>
 			<input type="text" name="nombre" maxlength="100"/><br><br>
@@ -53,3 +53,8 @@
 		</form>
 	</body>
 </html>
+<?php
+	if(isset($_POST['enviar'])){
+		$anadir = $controladorRetos->anadirReto($_POST);
+	}
+?>

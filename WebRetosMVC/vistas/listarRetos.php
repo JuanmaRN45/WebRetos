@@ -30,15 +30,7 @@
                 <th>ID</th>
                 <th>NOMBRE</th>
                 <th>DIRIGIDO</th>
-                <th>DESCRIPCIÓN</th>
-                <th>FECHA INICIO INSCRIPCIÓN</th>
-                <th>FECHA FIN INSCRIPCIÓN</th>
-                <th>FECHA INICIO RETO</th>
-                <th>FECHA FIN RETO</th>
-                <th>FECHA DE PUBLICACIÓN</th>
                 <th>PUBLICADO</th>
-                <th>PROFESOR</th>
-                <th>CATEGORÍA</th>
             </tr>
             <?php
                 if(isset($array[0])){
@@ -47,20 +39,12 @@
                             echo '<td>'.$array[0][$i].'</td>';
                             echo '<td>'.$array[1][$i].'</td>';
                             echo '<td>'.$array[2][$i].'</td>';
-                            echo '<td>'.$array[3][$i].'</td>';
-                            echo '<td>'.$array[4][$i].'</td>';
-                            echo '<td>'.$array[5][$i].'</td>';
-                            echo '<td>'.$array[6][$i].'</td>';
-                            echo '<td>'.$array[7][$i].'</td>';
-                            echo '<td>'.$array[8][$i].'</td>';
                             if($array[9][$i]==1){
                                 echo '<td>Si</td>';
                             }
                             else{
                                 echo '<td>No</td>';
                             }
-                            echo '<td>'.$array[10][$i].'</td>';
-                            echo '<td>'.$array[11][$i].'</td>';
                             $i=$i+1;
                         echo '</tr>';
                     }

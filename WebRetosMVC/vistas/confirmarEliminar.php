@@ -1,4 +1,9 @@
 <?php
+	if(isset($_POST['Eliminar'])){
+		require_once('../controlador/controladorRetos.php');
+    	$controladorRetos = new ControladorRetos();
+		$eliminar = $controladorRetos->eliminarReto($_POST);
+	}
     $array = array(
         0 =>$_POST['retoDel'],
     );
@@ -17,7 +22,7 @@
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
 		</nav>
-		<form action="../controlador/controladorRetos.php" method="post">
+		<form action="" method="post">
             <label>Estás seguro de que quieres borrar este reto</label>
             <?php
                 echo '<input id="invisible" type="text" value="'.$array[0].'" name="retoDel" hidden>'; 
