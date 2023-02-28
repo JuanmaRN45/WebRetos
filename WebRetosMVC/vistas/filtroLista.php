@@ -38,8 +38,10 @@
 					echo '<p>'.$reto[1].'</p><br><br>';
 					echo '<label>Dirigido:</label>';
 					echo '<p>'.$reto[2].'</p><br><br>';
-					echo '<label>Descripción:</label>';
-					echo '<p>'.$reto[3].'</p><br><br>';
+					if($reto[3]!=NULL){
+						echo '<label>Descripción:</label>';
+						echo '<p>'.$reto[3].'</p><br><br>';
+					}
 					echo '<label>Fecha Inicio Inscripción:</label>';
 					echo '<p>'.$reto[4].'</p><br><br>';
 					echo '<label>Fecha Fin Inscripción:</label>';
