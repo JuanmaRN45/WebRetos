@@ -10,6 +10,7 @@
         private $contrasenia;
         private $servidor;
         private $bd;
+        private $codi;
         /**
          * Constructor para el instanciamiento de objetos de tipo Categorias
          */
@@ -18,6 +19,7 @@
             $this->usuario = constant('USUARIO');
             $this->contrasenia = constant('CONTRASENIA');
             $this->bd = constant('BD');
+            $this->codi = constant('CODIFICACION');
         }
 
         public function anadirReto($array){
@@ -142,6 +144,7 @@
 
         private function conectar(){
             $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
+            $this->conexion->set_charset($this->codi);
         }
     }
 ?>

@@ -3,4 +3,5 @@
     define('USUARIO', 'user2daw_14');
     define('CONTRASENIA', 'RuolZQ4M{}Nx');
     define('BD', 'user2daw_BD1-14');
+    define('CODIFICACION', 'utf8');
 ?>
