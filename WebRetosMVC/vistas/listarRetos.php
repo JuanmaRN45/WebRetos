@@ -1,8 +1,16 @@
 <?php 
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header('Location: ./vistas/inicio_sesion.php');
+    }
     require_once('../controlador/controladorRetos.php');
     $controladorRetos =new ControladorRetos();
     $array = $controladorRetos->listarReto();
     $i=0;
+    if(isset($_POST['btnPDF'])){
+        $SacarPDF = $controladorRetos->sacarPDF(); 
+    }
+    
 ?>
 
 <html>
@@ -54,5 +62,8 @@
                 }   
             ?>
         </table>
+        <form action="" method="post">
+            <input type="submit" value="Sacar PDF" name="btnPDF">
+        </form>
 	</body>
 </html>

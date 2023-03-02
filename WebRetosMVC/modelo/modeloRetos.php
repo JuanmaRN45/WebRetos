@@ -1,6 +1,7 @@
 <?php
     require_once('../controlador/controladorRetos.php');
     require_once('../config/config.php');
+    require_once('../fpdf185/fpdf.php');
     /**
      * Clase para la gestión de objetos de tipo Categorias
      */
@@ -140,6 +141,21 @@
                 $i=$i+1;
             }
             return $categorias;
+        }
+
+        public function sacarpdf(){
+            $retos = $this->listarReto();
+            // Creación del objeto de la clase heredada
+            $pdf = new FPDF();
+            $pdf->AliasNbPages();
+            $pdf->AddPage();
+            $pdf->SetFont('Times','',12);
+            for($i=1;$i<=11;$i++){
+                for($x=0;$x<=7;$x++){
+                    $pdf->Cell(0,10,$retos[$i][$x],0,1);
+                }
+            }   
+            $pdf->Output();
         }
 
         private function conectar(){

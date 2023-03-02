@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['id'])){
+        header('Location: ./vistas/inicio_sesion.php');
+    }
+        
+?>
 <html>
 	<head>
 		<title>App Retos</title>

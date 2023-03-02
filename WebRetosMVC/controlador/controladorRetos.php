@@ -124,6 +124,10 @@
                 echo '<p><a href="../vistas/listarRetos.php">Volver</a></p>';
             }
         }
+
+        public function sacarPDF(){
+            $this->modelo->sacarpdf();
+        }
     }
 
     $controlador = new ControladorRetos();

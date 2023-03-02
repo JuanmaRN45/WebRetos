@@ -1,4 +1,8 @@
 <?php
+	session_start();
+    if(!isset($_SESSION['id'])){
+        header('Location: ./vistas/inicio_sesion.php');
+    }
     $array = array(
         0 =>$_POST['nomFiltro']
     );
