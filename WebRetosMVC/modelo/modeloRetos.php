@@ -149,12 +149,21 @@
             $pdf = new FPDF();
             $pdf->AliasNbPages();
             $pdf->AddPage();
+            // Arial bold 15
+            $pdf->SetFont('Arial','B',15);
+            // Movernos a la derecha
+            $pdf->Cell(70);
+            // Título
+            $pdf->Cell(50,10,'Listado de Retos',1,0,'C');
+            // Salto de línea
+            $pdf->Ln(20);
             $pdf->SetFont('Times','',12);
-            for($i=1;$i<=11;$i++){
-                for($x=0;$x<=7;$x++){
+            for($x=0;$x<=6;$x++){
+                for($i=0;$i<=11;$i++){
                     $pdf->Cell(0,10,$retos[$i][$x],0,1);
                 }
-            }   
+            }
+
             $pdf->Output();
         }
 
