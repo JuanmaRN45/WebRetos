@@ -42,7 +42,7 @@
             $this->conectar();
             $sql = 'SELECT *
 			FROM RETOS
-            ORDER BY id;';
+            WHERE idProfesor='.$_SESSION['id'].';';
             $resultado = $this->conexion->query($sql);
             $i = 0;
             $array = [];

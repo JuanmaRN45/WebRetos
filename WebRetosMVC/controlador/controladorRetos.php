@@ -21,7 +21,7 @@
                         $datos['ffreto'],
                         $datos['fpubli'],
                         $datos['categoria'],
-                        1,
+                        $_SESSION['id'],
                         $datos['publicar'],
                         $archivo['archivo']
                     );
