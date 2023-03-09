@@ -1,7 +1,13 @@
 <?php
 	session_start();
     if(!isset($_SESSION['id'])){
-        header('Location: ./vistas/inicio_sesion.php');
+        header('Location: ../vistas/inicio_sesion.php');
+    }
+	
+    if(isset($_POST['cerrarsesion'])){
+        require_once('../controlador/controladorGeneral.php');
+        $controladorGeneral =new ControladorGeneral();
+        $controladorGeneral->cerrarSesion();
     }
 	if(isset($_POST['Eliminar'])){
 		require_once('../controlador/controladorRetos.php');
@@ -25,6 +31,7 @@
 			<a href="../vistas/listarRetos.php"><button>LISTAR RETOS</button></a>
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
+			<form action="" method="post" id="cerrarsesion"><input type="submit" value="Cerrar Sesión" name="cerrarsesion"></form>
 		</nav>
 		<form action="" method="post">
             <label>Estás seguro de que quieres borrar este reto</label>

@@ -84,6 +84,7 @@
                 $datos[9]= $fila['publicado'];
                 $datos[10]= $fila['idProfesor'];
                 $datos[11]= $fila['idCategoria'];
+                $datos[12]= $fila['archivo'];
 			}
             return $datos;
         }
@@ -114,12 +115,25 @@
 
         public function actualizarReto($array){
             $this->conectar();
+
+            $consulta1 = 'SELECT archivo FROM RETOS';
+            $resultado1 = $this->conexion->query($consulta1);
+            while($fila = $resultado1->fetch_assoc()){
+                $archivoAntiguo = $fila['archivo'];
+            }
+
+            $nom_archivo = $array[12]['name'];
+            $ruta = "../archivos_subidos/".$nom_archivo;
+            $archivo=$array[12]['tmp_name'];
+            $subir=move_uploaded_file($archivo,$ruta);
+            unlink(realpath($archivoAntiguo));
+            
             if($array[3]==""){
-                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion=NULL,fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion=NULL,fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'",archivo="'.$ruta.'" WHERE id="'.$array[0].'"');
                 $resultado=$this->conexion->query($sql);
             }
             else{
-                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'" WHERE id="'.$array[0].'"');
+                $sql = ('UPDATE RETOS SET nombre="'.$array[1].'",dirigido="'.$array[2].'",descripcion="'.$array[3].'",fechaInicioInscripcion="'.$array[4].'",fechaFinInscripcion="'.$array[5].'",fechaInicioReto="'.$array[6].'",fechaFinReto="'.$array[7].'",fechaPublicacion="'.$array[8].'",publicado="'.$array[11].'",idProfesor="'.$array[10].'",idCategoria="'.$array[9].'",archivo="'.$ruta.'" WHERE id="'.$array[0].'"');
                 $resultado=$this->conexion->query($sql);
             }
             

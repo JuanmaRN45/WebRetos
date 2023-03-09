@@ -1,9 +1,20 @@
 <!-- Juan Manuel Rincón Navarro -->
 <?php
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header('Location: ./vistas/inicio_sesion.php');
+	}
+	
+    if(isset($_POST['cerrarsesion'])){
+        require_once('../controlador/controladorGeneral.php');
+        $controladorGeneral =new ControladorGeneral();
+        $controladorGeneral->cerrarSesion();
+    }
 	if(isset($_POST['enviarActu'])){
 		require_once('../controlador/controladorRetos.php');
     	$controladorRetos = new ControladorRetos();
-		$actualizar = $controladorRetos->actualizarReto($_POST);
+		print_r($_POST);
+		$actualizar = $controladorRetos->actualizarReto($_POST,$_FILES);
 	}
     $array = array(
         0 =>$_POST['retoMod']
@@ -29,8 +40,9 @@
 			<a href="../vistas/listarRetos.php"><button>LISTAR RETOS</button></a>
 			<a href="../vistas/eliminarReto.php"><button>ELIMINAR RETOS</button></a>
 			<a href="../vistas/modificarRetos.php"><button>MODIFICAR RETOS</button></a>
+			<form action="" method="post" id="cerrarsesion"><input type="submit" value="Cerrar Sesión" name="cerrarsesion"></form>
 		</nav>
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
             <h2>Modificación de Reto</h2>
 			<label>Id:</label>
 			<?php echo '<input type="text" name="id" value="'.$reto[0].'" readonly/>';?><br><br>
@@ -59,6 +71,8 @@
 					}
 				?>
             </select><br><br>
+			<label>Archivo:</label><br><br>
+			<input type="file" name="archivo" accept=".doc,.docx"><br><br>
 			<label>Publicar:</label><br><br>
 			<?php 
 				if($reto[9]==1){

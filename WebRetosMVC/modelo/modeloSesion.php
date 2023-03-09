@@ -59,6 +59,10 @@
            } 
         }
 
+        public function cerrarSesion(){
+            session_destroy();
+        }
+
         private function conectar(){
             $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
             $this->conexion->set_charset($this->codi);

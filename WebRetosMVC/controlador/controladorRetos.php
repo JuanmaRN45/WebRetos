@@ -62,7 +62,7 @@
             
         }
 
-        public function actualizarReto($datos){
+        public function actualizarReto($datos,$archivo){
             try {
                 $array = array(
                     0 =>$_POST['id'],
@@ -75,8 +75,10 @@
                     $_POST['ffreto'],
                     $_POST['fpubli'],
                     $_POST['categoria'],
-                    1,
+                    $_SESSION['id'],
                     $_POST['publicar'],
+                    $archivo['archivo']
+
                 );
                 $this->modelo->actualizarReto($array);
                 header('Location:../vistas/listarRetos.php');

@@ -24,6 +24,10 @@
             $this->modeloSesion->iniciarSesion($datos);
             header('Location: ../index.php');
         }
+        public function cerrarSesion(){
+            $this->modeloSesion->cerrarSesion();
+            header('Location: ../vistas/inicio_sesion.php');
+        }
      }
 
     $controlador = new ControladorGeneral();

@@ -19,8 +19,5 @@
         <form action="./controlador/controladorGeneral.php" method="post">
             <input type="submit" value="Retos"name="btnRetos">
         </form>
-        <form action="./controlador/controladorGeneral.php">
-            <input type="submit" value="Profesores" name="btnProfesores">
-        </form>
     </body>
 </html>

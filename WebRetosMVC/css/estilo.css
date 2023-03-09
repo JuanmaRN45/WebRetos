@@ -33,6 +33,16 @@ h1{
     text-align: center;
 }
 
+#cerrarsesion{
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0;
+    width: 150px;
+    font-size: 25px;
+    background-color: palegreen;  
+}
+
 form{
     text-align: center;
     border: 2px solid black;
