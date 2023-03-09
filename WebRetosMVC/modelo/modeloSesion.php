@@ -36,7 +36,7 @@
            $consulta->close();
            $this->conexion->close();
 
-           // Comprobar que el resultado devuelve al administrador (más de 0 filas)
+           
            if($resultado->num_rows == 1) 
            {
                $fila = $resultado->fetch_assoc();
@@ -44,7 +44,7 @@
                $contrasena = $fila['contrasena'];
                $id=$fila['id'];
                
-               // Comprobar que la contraseña del formulario y de la BBDD coinciden, y comprobar que el usuario sea igual.
+               
                if($datos['contrasena'] === $contrasena && $datos['correo'] === $correo) 
                {
                    ini_set('session.use_strict_mode', true);   

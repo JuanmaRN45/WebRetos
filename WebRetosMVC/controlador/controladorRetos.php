@@ -8,9 +8,9 @@
             $this->modelo=new Retos();
         }
 
-        public function anadirReto($datos){
+        public function anadirReto($datos,$archivo){
             try {
-                if(!empty($datos['nombre']) && !empty($datos['dirigido']) && !empty($datos['fiinscrip']) && !empty($datos['ffinscrip']) && !empty($datos['fireto']) && !empty($datos['fpubli']) && !empty($datos['categoria']) && !empty($datos['publicar'])){
+                if(!empty($datos['nombre']) && !empty($datos['dirigido']) && !empty($datos['fiinscrip']) && !empty($datos['ffinscrip']) && !empty($datos['fireto']) && !empty($datos['fpubli']) && !empty($datos['categoria']) && !empty($datos['publicar']) && !empty($archivo)){
                     $array = array(
                         0 =>$datos['nombre'],
                         $datos['dirigido'],
@@ -23,6 +23,7 @@
                         $datos['categoria'],
                         1,
                         $datos['publicar'],
+                        $archivo['archivo']
                     );
                     $this->modelo->anadirReto($array);
                     header('Location:../vistas/listarRetos.php');

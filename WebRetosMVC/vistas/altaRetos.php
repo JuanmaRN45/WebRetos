@@ -25,7 +25,7 @@
 		</nav>
 		<?php
 			if(isset($_POST['enviar'])){
-				$anadir = $controladorRetos->anadirReto($_POST);
+				$anadir = $controladorRetos->anadirReto($_POST,$_FILES);
 				switch($anadir)
 				{
 					case 1:
@@ -39,7 +39,7 @@
 				}
 			}
 		?>
-		<form action="" method="post">
+		<form action="" method="post" enctype="multipart/form-data">
 			<h2>Añadir Retos</h2>
 			<label>Nombre:</label>
 			<input type="text" name="nombre" maxlength="100"/><br><br>
@@ -66,6 +66,8 @@
 					}
 				?>
             </select><br><br>
+			<label>Archivo:</label><br><br>
+			<input type="file" name="archivo"  accept=".doc,.docx"><br><br>
 			<label>Publicar:</label><br><br>
 			<input type="radio" value="1" name="publicar"/>Si<br><br>
 			<input type="radio" value="0" name="publicar"/>No<br><br>

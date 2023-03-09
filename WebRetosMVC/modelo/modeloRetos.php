@@ -28,10 +28,14 @@
             if($array[2]==""){
                 $array[2]=NULL;
             }
-            $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,publicado,idProfesor,idCategoria) VALUE(?,?,?,?,?,?,?,?,?,?,?)');
-            $sql->bind_param('ssssssssiii', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[10],$array[9],$array[8]);
+            $nom_archivo = $array[11]['name'];
+            $ruta = "../archivos_subidos/".$nom_archivo;
+            $archivo=$array[11]['tmp_name'];
+            $subir=move_uploaded_file($archivo,$ruta);
+
+            $sql = $this->conexion->prepare('INSERT INTO RETOS(nombre,dirigido,descripcion,fechaInicioInscripcion,fechaFinInscripcion,fechaInicioReto,fechaFinReto,fechaPublicacion,publicado,idProfesor,idCategoria,archivo) VALUE(?,?,?,?,?,?,?,?,?,?,?,?)');
+            $sql->bind_param('ssssssssiiis', $array[0],$array[1],$array[2],$array[3],$array[4],$array[5],$array[6],$array[7],$array[10],$array[9],$array[8],$ruta);
             $sql->execute();
-            
         }
 
         public function listarReto(){
