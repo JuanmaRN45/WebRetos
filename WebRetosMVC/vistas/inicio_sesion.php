@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Formulario Alta Retos</title>
+		<title>Formulario Inicio Sesión</title>
 		<meta charset="utf-8">
 		<meta name="author" content="jrinconnavarro.guadalupe@alumnado.fundacionloyola.net">
 		<link rel="stylesheet" type="text/css" href="../css/estilo.css">

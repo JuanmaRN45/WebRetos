@@ -39,93 +39,48 @@
         }
 
         public function listarReto(){
-            try {
-               return $this->modelo->listarReto();
-            }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../index.html">Volver</a></p>';
-            }
-            
+            return $this->modelo->listarReto();
         }
 
         public function modReto($array){
-            try {
-                return $this->modelo->sacarReto($array);
-            }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/modificarRetos.php">Volver</a></p>';
-            }
-            
+            return $this->modelo->sacarReto($array);
         }
 
         public function actualizarReto($datos,$archivo){
-            try {
-                $array = array(
-                    0 =>$_POST['id'],
-                    $_POST['nombre'],
-                    $_POST['dirigidoMod'],
-                    $_POST['descripcion'],
-                    $_POST['fiinscrip'],
-                    $_POST['ffinscrip'],
-                    $_POST['fireto'],
-                    $_POST['ffreto'],
-                    $_POST['fpubli'],
-                    $_POST['categoria'],
-                    $_SESSION['id'],
-                    $_POST['publicar'],
-                    $archivo['archivo']
+            $array = array(
+                0 =>$_POST['id'],
+                $_POST['nombre'],
+                $_POST['dirigidoMod'],
+                $_POST['descripcion'],
+                $_POST['fiinscrip'],
+                $_POST['ffinscrip'],
+                $_POST['fireto'],
+                $_POST['ffreto'],
+                $_POST['fpubli'],
+                $_POST['categoria'],
+                $_SESSION['id'],
+                $_POST['publicar'],
+                $archivo['archivo']
 
-                );
-                $this->modelo->actualizarReto($array);
-                header('Location:../vistas/listarRetos.php');
-            }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/modificarRetosForm.php">Volver</a></p>';
-            }
-            
+            );
+            $this->modelo->actualizarReto($array);
+            header('Location:../vistas/listarRetos.php');
         }
 
         public function eliminarReto($datos){
-            try {
-                $array = array(
-                    0 =>$_POST['retoDel'],
-                );
-                $this->modelo->eliminarReto($array);
-                header('Location:../vistas/listarRetos.php');
-            }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/eliminarReto.php">Volver</a></p>';
-            }
+            $array = array(
+                0 =>$_POST['retoDel'],
+            );
+            $this->modelo->eliminarReto($array);
+            header('Location:../vistas/listarRetos.php');
         }
         
         public function filtrarReto($array){
-            try {
-                return $this->modelo->filtrarReto($array);
-            }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/listarRetos.php">Volver</a></p>';
-            }
+           return $this->modelo->filtrarReto($array); 
         }
 
         public function listarCat(){
-            try {
-                return $this->modelo->listarCat();
-             }
-            catch(mysqli_sql_exception $e) 
-            {
-                echo '<p>' . $e->getMessage() . '</p>';
-                echo '<p><a href="../vistas/listarRetos.php">Volver</a></p>';
-            }
+           return $this->modelo->listarCat();
         }
 
         public function sacarPDF(){

@@ -1,0 +1,67 @@
+<?php
+    use Shuchkin\SimpleXLSX;
+    require_once('../config/config.php');
+    require_once('../modelo/SimpleXLSX.php');
+    
+    /**
+     * Clase para la gestión de objetos de tipo ImportarExcel
+     */
+    class ImportarExcel{
+        private $conexion;
+        private $usuario;
+        private $contrasenia;
+        private $servidor;
+        private $bd;
+        private $codi;
+        
+        function __construct(){
+            $this->servidor = constant('SERVIDOR');
+            $this->usuario = constant('USUARIO');
+            $this->contrasenia = constant('CONTRASENIA');
+            $this->bd = constant('BD');
+            $this->codi = constant('CODIFICACION');
+        }
+
+        public function importarExcel($array){
+            $nombres = [];
+            $correos = [];
+            $contrasenas = [];
+            $nombre = '';
+            $correo ='';
+            $contrasena = '';
+        
+            // Realizar extracción de datos
+            $claseXLSX = new SimpleXLSX($array['archivoImportado']['tmp_name']);     
+        
+            foreach($claseXLSX->rows() as $fila)
+            {
+                array_push($nombres, $fila[0]);
+                array_push($correos, $fila[1]);
+                array_push($contrasenas, $fila[2]);
+            }
+
+
+            $this->conectar();
+
+            $sql = "INSERT INTO PROFESORES(nombre, correo, contrasena) VALUES(?, ?, ?)";
+            $resultado = $this->conexion->prepare($sql);
+    
+            $resultado->bind_param('sss', $nombre, $correo, $contrasena);
+    
+            for($i=0; $i<count($nombres); $i++) 
+            {
+                $nombre = $nombres[$i];
+                $correo = $correos[$i];
+                $contrasena = $contrasenas[$i];
+    
+                $resultado->execute();
+            }
+
+        }
+
+        private function conectar(){
+            $this->conexion = new mysqli($this->servidor,  $this->usuario,  $this->contrasenia, $this->bd);
+            $this->conexion->set_charset($this->codi);
+        }
+    }
+?>

@@ -2,6 +2,7 @@
     /*require_once('controladorCategorias.php');*/
     require_once('controladorRetos.php');
     require_once('../modelo/modeloSesion.php');
+    require_once('../modelo/modeloImportarExcel');
 
     class ControladorGeneral{
         /**
@@ -9,6 +10,7 @@
          */
         function __construct(){
             $this->modeloSesion=new Inicio();
+            $this->modeloExcel=new ImportarExcel();
             /*$this->controladorCategorias=new ControladorCategorias();*/
             $this->controladorRetos=new ControladorRetos();
             /*if(isset ($_POST["btnCategorias"])){
@@ -27,6 +29,9 @@
         public function cerrarSesion(){
             $this->modeloSesion->cerrarSesion();
             header('Location: ../vistas/inicio_sesion.php');
+        }
+        public function importarExcel($array){
+            $this->modeloExcel->importarExcel($array);
         }
      }
 
