@@ -16,7 +16,8 @@
 	</head>
 	<body>
 		<form action="" method="post" enctype="multipart/form-data">
-			<label></label><br><br>
+			<h2>Importar profesores desde Excel</h2>
+			<label>Archivo a Importar</label><br><br>
 			<input type="file" name="archivoImportado" accept=".xls,.xlsx" require><br><br>
 			<input type="submit" name="enviarArchivo"/>
 		</form>
