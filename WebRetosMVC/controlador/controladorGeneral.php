@@ -1,5 +1,5 @@
 <?php
-    /*require_once('controladorCategorias.php');*/
+    require_once('controladorCategorias.php');
     require_once('controladorRetos.php');
     require_once('../modelo/modeloSesion.php');
     require_once('../modelo/modeloImportarExcel');
@@ -14,7 +14,7 @@
             $this->controladorCategorias=new ControladorCategorias();
             $this->controladorRetos=new ControladorRetos();
             if(isset ($_POST["btnCategorias"])){
-                $this->controladorCategorias->consultaCategorias();
+                header('Location:../vistas/consultaCategorias.php');
                 
             }
             if(isset ($_POST["btnRetos"])){
