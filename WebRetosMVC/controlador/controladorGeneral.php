@@ -11,12 +11,12 @@
         function __construct(){
             $this->modeloSesion=new Inicio();
             $this->modeloExcel=new ImportarExcel();
-            /*$this->controladorCategorias=new ControladorCategorias();*/
+            $this->controladorCategorias=new ControladorCategorias();
             $this->controladorRetos=new ControladorRetos();
-            /*if(isset ($_POST["btnCategorias"])){
+            if(isset ($_POST["btnCategorias"])){
                 $this->controladorCategorias->consultaCategorias();
                 
-            }*/
+            }
             if(isset ($_POST["btnRetos"])){
                 header('Location:../vistas/listarRetos.php');
             }

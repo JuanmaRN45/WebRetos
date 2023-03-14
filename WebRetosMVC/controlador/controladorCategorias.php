@@ -6,23 +6,6 @@
          */
         function __construct(){
             $this->modelo=new Categorias();
-            if(isset ($_GET["idBor"])){
-                $datos['id'] = $_GET['idBor'];
-                $this->eliminarCat($datos);
-            }
-            if(isset ($_POST['nombre'])){
-                $datos['nombre'] = $_POST['nombre'];
-                $this->anadirCat($datos);
-            }
-            if(isset ($_GET["idMod"])){
-                $datos['id'] = $_GET['idMod'];
-                $this->modCat($datos);
-            }
-            if(isset ($_POST['nombreMod'])){
-                $datos['id'] = $_GET['id2'];
-                $datos['nombre'] = $_POST['nombreMod'];
-                $this->updateCat($datos);
-            }
         }
 
         public function eliminarCat($datos){
@@ -35,9 +18,12 @@
             header('Location:../vistas/consultaCategorias.php');
         }
 
+        public function irModificar($datos){
+            header('Location:../vistas/modificarCategorias.php?id='.$datos['id'].'');
+        } 
+
         public function modCat($datos){
-            $this->modelo->consultaCategoria($datos);
-            header('Location:../vistas/modificarCategorias.php?id='.$datos['id'].'&nombre='.$datos['nombre'].'');	
+            return $this->modelo->sacarCategoria($datos);
         }
 
         public function updateCat($datos){
@@ -46,8 +32,7 @@
         }
 
         public function consultaCategorias(){
-            $this->modelo->consultaCategoria();
-            header('Location:../vistas/consultaCategorias.php?id='.$datos['id'].'&nombre='.$datos['nombre'].'');	
+            return $this->modelo->consultaCategoria();
         }
      }
 

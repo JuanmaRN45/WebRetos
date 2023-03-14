@@ -1,6 +1,14 @@
 <?php
+	if(isset($_POST['enviar'])){
+		require_once('../controlador/controladorCategorias.php');
+		$controladorCategorias = new ControladorCategorias();
+		$controladorCategorias->updateCat($_POST);
+	}
 	$idCategoria = $_GET["id"];
-	$nombre2 = $_GET["nombre"];
+	require_once('../controlador/controladorCategorias.php');
+	$controladorCategorias = new ControladorCategorias();
+	$datos = $controladorCategorias->modCat($idCategoria);
+	
 ?>
 <html>
 	<head>
@@ -10,9 +18,10 @@
 	</head>
 	<body>
 		<h2 class="letraazul">Modificar Categorías</h2>
-		<?php echo '<form action="../controlador/controladorCategorias.php?id2='.$idCategoria.'" method="post">';?>
+		<?php echo '<form action="" method="post">';?>
 			<label>Nombre:</label>
-			<?php echo '<input type="text" name="nombreMod" value="'.$nombre2.'" maxlength="30"/>';?><br><br>
+			<?php echo '<input type="text" name="nombreMod" value="'.$datos['nombre'].'" maxlength="30"/>';?><br><br>
+			<?php echo '<input type="text" name="id" value="'.$datos['id'].'" maxlength="30" hidden/>';?>
 			<a href="consultaCategorias.php">Ver listado</a><br><br>
 			<input type="submit" name="enviar"/>
 		</form>
